@@ -30,7 +30,7 @@ nav > div {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 0px;
+  top: 10px;
   left: 0;
   padding: 10px;
 }
@@ -67,6 +67,7 @@ nav > div {
   left: 30%;
   transform: translate(-50%, -50%);
   font-family: "Poppins";
+  text-shadow: 5px 5px 5px #aa2222;
 }
 
 .text div:nth-child(1) {

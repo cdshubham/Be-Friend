@@ -24,7 +24,7 @@
             placeholder="Password"
             required=""
           />
-          <button>Sign up</button>
+          <button id="submit">Sign up</button>
         </form>
       </div>
 
@@ -42,5 +42,15 @@
         </form>
       </div>
     </div>
+    <script>
+      const submitButton = document.getElementById("submit");
+
+      submitButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Redirect to the desired URL when the button is clicked
+        window.location.href = "QnA.html"; // Change this URL to your desired destination
+      });
+    </script>
   </body>
 </html>
