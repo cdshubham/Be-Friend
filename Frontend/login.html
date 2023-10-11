@@ -8,6 +8,8 @@
       rel="stylesheet"
     />
     <link rel="icon" href="enter.png" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   </head>
   <body>
     <div class="main">
@@ -32,14 +34,15 @@
       <div class="login">
         <form>
           <label for="chk" aria-hidden="true">Login</label>
-          <input type="email" name="email" placeholder="Email" required="" />
+          <input type="email" name="email" placeholder="Email" required id="useremail1" />
           <input
             type="password"
             name="pswd"
             placeholder="Password"
-            required=""
+            required
+            id="userpassword1"
           />
-          <button>Login</button>
+          <button class="loginButton">Login</button>
         </form>
       </div>
     </div>
@@ -62,19 +65,41 @@
 
         console.log(payload)
         
-        const result=await fetch("http://127.0.0.1:10000/signup",{
-          method:"POST",
-          headers:{
-            "Content-type":"application/json"
-          },
-          body:payload
-        })
+        const result=await axios.post("http://127.0.0.1:10000/signup",payload,{
+        headers: {
+        "Content-Type": "application/json"
+        }})
         
         console.log(result)
 
         // Redirect to the desired URL when the button is clicked
         // window.location.href = "QnA.html"; // Change this URL to your desired destination
       });
+
+      const loginButton=document.querySelector(".loginButton")
+
+      loginButton.addEventListener("click",async function (){
+        
+
+        console.log("Hello")
+        const useremail=document.querySelector("#useremail1").value
+        const userpassword=document.querySelector("#userpassword1").value
+
+        let payload={
+          email:useremail,
+          password:userpassword
+        }
+
+
+        console.log(payload)
+        
+        const result=await axios.post("http://127.0.0.1:10000/signin",payload,{
+        headers: {
+        "Content-Type": "application/json"
+        }})
+        
+        console.log(result)
+      })
     </script>
   </body>
 </html>
