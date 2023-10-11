@@ -10,6 +10,10 @@
     <link rel="icon" href="enter.png" type="image/x-icon" />
   </head>
   <body>
+    <div id="back" style="cursor: pointer">
+      <!-- Added cursor style to indicate it's clickable -->
+      <div>Home</div>
+    </div>
     <div class="main">
       <input type="checkbox" id="chk" aria-hidden="true" />
 
@@ -38,18 +42,30 @@
             placeholder="Password"
             required=""
           />
-          <button>Login</button>
+          <button id="login">Login</button>
         </form>
       </div>
     </div>
     <script>
-      const submitButton = document.getElementById("submit");
+      const backLink = document.getElementById("back");
+      backLink.addEventListener("click", function () {
+        // Redirect to the desired URL when the "Home" link is clicked
+        window.location.href = "index.html"; // Change this URL to your desired destination
+      });
 
+      const submitButton = document.getElementById("submit");
+      const loginButton = document.getElementById("login");
       submitButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the form from submitting
 
-        // Redirect to the desired URL when the button is clicked
+        // Redirect to the desired URL when the "Sign up" button is clicked
         window.location.href = "QnA.html"; // Change this URL to your desired destination
+      });
+      loginButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Redirect to the desired URL when the "Login" button is clicked
+        window.location.href = "mic.html"; // Change this URL to your desired destination
       });
     </script>
   </body>

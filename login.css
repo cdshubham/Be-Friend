@@ -90,3 +90,23 @@ button:hover {
 #chk:checked ~ .signup label {
   transform: scale(0.6);
 }
+
+#back {
+  background-color: #fff;
+  height: 80px;
+  width: 100px;
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  color: #302b63;
+  font-weight: 800;
+  font-size: 30px;
+  border-radius: 50px;
+}
+
+#back div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
