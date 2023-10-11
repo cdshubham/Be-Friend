@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slide Navbar</title>
+    <link rel="stylesheet" type="text/css" href="login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="./assets/enter.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="back" style="cursor: pointer">
+      <!-- Added cursor style to indicate it's clickable -->
+      <div>Home</div>
+    </div>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+
+      <div class="signup">
+        <form>
+          <label for="chk" aria-hidden="true" >Sign up</label>
+          <input type="text" name="txt" placeholder="User name" required id="signName"/>
+          <input type="email" name="email" placeholder="Email" required id="signEmail"/>
+          <input
+            type="password"
+            name="pswd"
+            placeholder="Password"
+            required
+            id="signPass"
+          />
+          <button id="submit">Sign up</button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Login</label>
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="pswd"
+            placeholder="Password"
+            required
+          />
+          <button id="login">Login</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const backLink = document.getElementById("back");
+      backLink.addEventListener("click", function () {
+        // Redirect to the desired URL when the "Home" link is clicked
+        window.location.href = "index.html"; // Change this URL to your desired destination
+      });
+
+      const submitButton = document.getElementById("submit");
+      const loginButton = document.getElementById("login");
+      const signName = document.getElementById("signName");
+      const signPass = document.getElementById("signPass");
+      const signEmail = document.getElementById("signEmail");
+      submitButton.addEventListener("click", function (event) {
+        console.log("hello");
+        if(signName.innerHTML!='' && signEmail.innerHTML!='' && signPass.innerHTML!='')
+        {event.preventDefault(); // Prevent the form from submitting
+
+        // Redirect to the desired URL when the "Sign up" button is clicked
+        window.location.href = "QnA.html"; // Change this URL to your desired destination
+        }
+      });
+      loginButton.addEventListener("click", function (event) {
+
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Redirect to the desired URL when the "Login" button is clicked
+        window.location.href = "mic.html"; // Change this URL to your desired destination
+      });
+    </script>
+  </body>
+</html>
