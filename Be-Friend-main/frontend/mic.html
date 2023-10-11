@@ -15,14 +15,33 @@
   </head>
   <body>
     <div id="ai-section">
-      <div class="square">
+      <div class="square" onclick="toggleColor(this)">
         <img src="./assets/mic.png" class="mic" />
       </div>
     </div>
     <div id="user-section">
-      <div class="square">
+      <div class="square" onclick="toggleColor(this)">
         <img src="./assets/mic(user).png" class="mic" />
       </div>
     </div>
+
+    <script>
+      const currentColor = window
+        .getComputedStyle(element)
+        .getPropertyValue("color");
+
+      // Check if the current color is red
+      if (currentColor === "#edf5e1") {
+        // Change the color to blue
+        element.style.color = "blue";
+      } else {
+        // Change the color to red
+        element.style.color = "red";
+      }
+
+      function toggleColor(element) {
+        element.style.background = "blue";
+      }
+    </script>
   </body>
 </html>

@@ -19,9 +19,21 @@
 
       <div class="signup">
         <form>
-          <label for="chk" aria-hidden="true" >Sign up</label>
-          <input type="text" name="txt" placeholder="User name" required id="signName"/>
-          <input type="email" name="email" placeholder="Email" required id="signEmail"/>
+          <label for="chk" aria-hidden="true">Sign up</label>
+          <input
+            type="text"
+            name="txt"
+            placeholder="User name"
+            required
+            id="signName"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            id="signEmail"
+          />
           <input
             type="password"
             name="pswd"
@@ -36,17 +48,28 @@
       <div class="login">
         <form>
           <label for="chk" aria-hidden="true">Login</label>
-          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            id="loginEmail"
+          />
           <input
             type="password"
             name="pswd"
             placeholder="Password"
             required
+            id="loginPass"
           />
           <button id="login">Login</button>
         </form>
       </div>
     </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
     <script>
       const backLink = document.getElementById("back");
       backLink.addEventListener("click", function () {
@@ -59,17 +82,88 @@
       const signName = document.getElementById("signName");
       const signPass = document.getElementById("signPass");
       const signEmail = document.getElementById("signEmail");
-      submitButton.addEventListener("click", function (event) {
-        console.log("hello");
-        if(signName.innerHTML!='' && signEmail.innerHTML!='' && signPass.innerHTML!='')
-        {event.preventDefault(); // Prevent the form from submitting
+      const loginPass = document.getElementById("loginPass");
+      const loginEmail = document.getElementById("loginEmail");
 
-        // Redirect to the desired URL when the "Sign up" button is clicked
-        window.location.href = "QnA.html"; // Change this URL to your desired destination
+      submitButton.addEventListener("click", function (event) {
+        if (
+          signName.value !== "" &&
+          signEmail.value !== "" &&
+          signPass.value !== ""
+        ) {
+          event.preventDefault(); // Prevent the form from submitting
+          (function () {
+            emailjs.init("HSmh2oYDfWbVNO1uJ");
+          })();
+          function sendMail() {
+            var params = {
+              name: signName.value,
+              email: signEmail.value,
+              message: `Hello,User you are now Logged in to your Friends`,
+            };
+
+            const serviceID = "service_l5ypd7a";
+            const templateID = "template_us0gbkn";
+
+            emailjs
+              .send(serviceID, templateID, params)
+              .then((res) => {
+                signName.value;
+                signEmail.value;
+                `Hello,User you are now Logged in to your Friends`;
+                console.log(res);
+                alert("Your message sent successfully!!");
+              })
+              .catch((err) => console.log(err));
+          }
+
+          // Redirect to the desired URL when the "Login" button is clicked
+          window.location.href = "QnA.html"; // Change this URL to your desired destination
+        } else {
+          event.preventDefault(); // Prevent the form from submitting
+
+          // Create a custom notification
+          let notification = document.createElement("div");
+          notification.classList.add("notification");
+          notification.textContent = "Please fill in all fields.";
+
+          // Append the notification to the form
+          const form = document.querySelector("form");
+          form.appendChild(notification);
+
+          // Remove the notification after a few seconds (you can adjust the delay)
+          setTimeout(function () {
+            form.removeChild(notification);
+          }, 3000); // Notification disappears after 3 seconds
         }
       });
-      loginButton.addEventListener("click", function (event) {
 
+      loginButton.addEventListener("click", function (event) {
+        if (loginEmail.value !== "" && loginPass.value !== "") {
+          event.preventDefault(); // Prevent the form from submitting
+
+          // Redirect to the desired URL when the "Login" button is clicked
+          window.location.href = "mic.html"; // Change this URL to your desired destination
+        } else {
+          event.preventDefault(); // Prevent the form from submitting
+
+          // Create a custom notification
+          let notification = document.createElement("div");
+          notification.classList.add("notification");
+          notification.textContent = "Please fill in all fields.";
+
+          // Append the notification to the form
+          const form = document.querySelector("form");
+          form.appendChild(notification);
+
+          // Remove the notification after a few seconds (you can adjust the delay)
+          setTimeout(function () {
+            form.removeChild(notification);
+          }, 3000); // Notification disappears after 3 seconds
+        }
+      });
+
+      loginButton.addEventListener("click", function (event) {
         event.preventDefault(); // Prevent the form from submitting
 
         // Redirect to the desired URL when the "Login" button is clicked
